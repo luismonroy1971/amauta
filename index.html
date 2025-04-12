@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Amauta - Hub Tecnológico Perú 2030</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #f1c40f;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #34495e;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+       /* Header */
+        header {
+            background-color: var(--dark);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 25px 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 30px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--secondary);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-left: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.9)), url('https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; 
+            background-blend-mode: overlay;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .primary-button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .primary-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Problem Section */
+        .bg-light {
+            background-color: #f8f9fa;
+        }
+        
+        .problem-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .problem-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            width: 220px;
+            margin: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Courses Section */
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .course-content {
+            padding: 20px;
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .course-description {
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .course-price {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .benefit-description {
+            color: var(--text);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(rgba(52, 152, 219, 0.9), rgba(52, 152, 219, 0.95)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            background-blend-mode: overlay;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title h2::after {
+            background-color: white;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            opacity: 0.2;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .author-name {
+            font-weight: bold;
+        }
+        
+        .author-position {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .tabs-nav ul {
+            display: flex;
+            list-style: none;
+            background-color: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tabs-nav li {
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .tabs-nav li.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tabs-nav li:hover:not(.active) {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Accordion */
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding: 0 20px 20px;
+        }
+        
+        .accordion-content h4 {
+            color: var(--primary);
+            margin: 20px 0 10px;
+        }
+        
+        .accordion-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Duration Cards */
+        .duration-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .duration-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .duration-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .duration-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .duration-content {
+            padding: 20px;
+        }
+        
+        .duration-content ul {
+            padding-left: 20px;
+        }
+        
+        .duration-content li {
+            margin-bottom: 10px;
+        }
+        
+        /* Payment Styles */
+        .payment-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .payment-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .payment-intro h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .payment-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .payment-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .payment-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-icon img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .payment-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .payment-card ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .payment-card li {
+            margin-bottom: 8px;
+        }
+        
+        .payment-table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-table h3 {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        .payment-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .payment-table th,
+        .payment-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .payment-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .payment-table tr:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .payment-note {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 42, 58, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; 
+            background-blend-mode: overlay;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-list {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 20px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-list.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-link {
+                padding: 12px 20px;
+            }
+            
+            .nav-link:after {
+                bottom: 8px;
+            }
+            
+            .cta-button {
+                margin: 15px 20px;
+                display: inline-block;
+                text-align: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .tabs-nav ul {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .tabs-nav li {
+                text-align: center;
+            }
+            
+            .payment-table {
+                overflow-x: auto;
+            }
+            
+            .payment-table table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/cxkpf6p/amauta-logo.png" alt="Logo Amauta" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Proyecto</span>
+                    <span class="logo-subtitle">Amauta</span>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" aria-label="Menú Principal">☰</button>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#about" class="nav-link active">Nosotros</a></li>
+                    <li class="nav-item"><a href="#problem" class="nav-link">Problemática</a></li>
+                    <li class="nav-item"><a href="#courses" class="nav-link">Cursos</a></li>
+                    <li class="nav-item"><a href="#more-info" class="nav-link">Más Información</a></li>
+                    <li class="nav-item"><a href="#benefits" class="nav-link">Beneficios</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="#apply" class="cta-button">Postula Ya</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(41, 128, 185, 0.9)), url('https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; background-blend-mode: overlay;">
+        <div class="container">
+            <h1>HUB TECNOLÓGICO PERÚ 2030</h1>
+            <h2>Formando desarrolladores especializados en tecnologías de vanguardia para transformar digitalmente el Perú</h2>
+            <div class="hero-buttons">
+                <a href="#courses" class="primary-button">Conoce nuestros cursos</a>
+                <a href="#about" class="secondary-button">Más información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre el Proyecto Amauta</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>El <strong>Proyecto Amauta</strong> es una iniciativa educativa revolucionaria orientada a crear una institución de estudios técnicos superiores tecnológicos que capacite en cursos de especialización en desarrollo web, móvil e inteligencia artificial.</p>
+                    <p>Nuestra misión es democratizar el acceso a educación tecnológica de alta calidad, permitiendo que personas de todos los niveles socioeconómicos puedan acceder a carreras altamente demandadas en el mercado global.</p>
+                    <p>Con un modelo de pago diferido, formamos a los estudiantes sin la preocupación del costo hasta que consigan empleo en el sector. Esto permite eliminar barreras económicas y centrarse exclusivamente en el aprendizaje.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Estudiantes aprendiendo programación en un entorno colaborativo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>La Problemática</h2>
+            </div>
+            <div class="problem-content">
+                <p>En el Perú, miles de jóvenes ven truncado su futuro por falta de oportunidades educativas accesibles. Tomando como ejemplo el distrito de Comas en Lima Norte, podemos observar cifras alarmantes:</p>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">600K+</div>
+                        <div class="stat-label">Habitantes en Comas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Institución Superior Tecnológica Pública</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">42K+</div>
+                        <div class="stat-label">Egresados de secundaria por año</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25K</div>
+                        <div class="stat-label">Jóvenes buscan carreras tecnológicas</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 40px;">Muchos jóvenes talentosos no pueden pagar especialización tecnológica de calidad, lo que perpetúa un círculo de limitadas oportunidades laborales. El Proyecto Amauta busca romper este ciclo.</p>
+            </div>
+        </div>
+    </section>
+
+  <!-- Courses Section -->
+<section id="courses" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nuestros Programas</h2>
+        </div>
+        
+        <div class="courses-container">
+            <!-- Development Track -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Full Stack Developer</h3>
+                    <p class="course-description">Formación completa en desarrollo frontend y backend, preparándote para crear aplicaciones web desde cero.</p>
+                    <div class="course-details">
+                        <span>6 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Basic -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">IA Básico</h3>
+                    <p class="course-description">Aprende a utilizar e integrar modelos de IA existentes para mejorar la productividad en entornos laborales.</p>
+                    <div class="course-details">
+                        <span>3 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Intermediate -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">IA Intermedio</h3>
+                    <p class="course-description">Diseña y desarrolla agentes autónomos capaces de percibir, decidir y actuar en diversos entornos.</p>
+                    <div class="course-details">
+                        <span>4 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Advanced -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">IA Avanzado</h3>
+                    <p class="course-description">Domina machine learning y deep learning para crear soluciones de inteligencia artificial complejas.</p>
+                    <div class="course-details">
+                        <span>6 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- English -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Inglés para Programadores</h3>
+                    <p class="course-description">Aprende inglés técnico especializado para el mercado tecnológico internacional.</p>
+                    <div class="course-details">
+                        <span>4 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business -->
+            <div class="course-card">
+                <div class="course-image" style="background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80') center/cover no-repeat;">
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Gestión y Administración de Negocios</h3>
+                    <p class="course-description">Complementa tu formación técnica con herramientas para emprender o gestionar empresas tecnológicas.</p>
+                    <div class="course-details">
+                        <span>2 meses</span>
+                        <span class="course-price">Pago diferido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- More Information Section -->
+<section id="more-info" class="section bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Más Información</h2>
+        </div>
+        
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <ul>
+                <li class="active" data-tab="tab-curricula">Currículas</li>
+                <li data-tab="tab-duration">Tiempos</li>
+                <li data-tab="tab-payments">Pagos Diferidos</li>
+            </ul>
+        </div>
+        
+        <!-- Tab Contents -->
+        <div class="tabs-content">
+            <!-- Currículas Tab -->
+            <div class="tab-content active" id="tab-curricula">
+                <div class="accordion">
+                    <!-- Full Stack Developer -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Full Stack Developer</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <h4>Front End Developer (3 meses)</h4>
+                            <ul>
+                                <li>Fundamentos Web (HTML5, CSS3, Responsive Design)</li>
+                                <li>JavaScript Moderno (ES6+, DOM, APIs)</li>
+                                <li>React.js (Componentes, Hooks, Estado)</li>
+                                <li>Desarrollo Frontend Avanzado</li>
+                            </ul>
+                            
+                            <h4>Back End Developer (3 meses)</h4>
+                            <ul>
+                                <li>Fundamentos de Backend (Node.js, Express)</li>
+                                <li>Bases de Datos (SQL y NoSQL)</li>
+                                <li>APIs y Servicios Web (REST, GraphQL)</li>
+                                <li>Seguridad y Autenticación</li>
+                                <li>Despliegue y Operaciones</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- IA Básico -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>IA Básico: Uso de Modelos de IA</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Fundamentos de la Inteligencia Artificial</li>
+                                <li>Panorama actual de modelos de IA disponibles</li>
+                                <li>Uso de APIs de OpenAI, Google AI, HuggingFace</li>
+                                <li>Integración de herramientas de IA en flujos de trabajo</li>
+                                <li>Prompt engineering efectivo</li>
+                                <li>Ética y responsabilidad en el uso de IA</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- IA Intermedio -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>IA Intermedio: Creación de Agentes</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Arquitectura de agentes inteligentes</li>
+                                <li>Técnicas de procesamiento del lenguaje natural</li>
+                                <li>Sistemas multiagente</li>
+                                <li>Integración de bases de conocimiento</li>
+                                <li>Toma de decisiones y planificación</li>
+                                <li>Diseño de interfaces conversacionales</li>
+                                <li>Implementación de APIs para agentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- IA Avanzado -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>IA Avanzado: Machine Learning y Deep Learning</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Fundamentos matemáticos y estadísticos del ML</li>
+                                <li>Algoritmos supervisados y no supervisados</li>
+                                <li>Redes neuronales y arquitecturas profundas</li>
+                                <li>Visión por computadora y procesamiento de imágenes</li>
+                                <li>Procesamiento avanzado del lenguaje natural</li>
+                                <li>Modelos generativos</li>
+                                <li>MLOps: Despliegue y mantenimiento de modelos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Inglés para Programadores -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Inglés para Programadores</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Vocabulario especializado en desarrollo de software</li>
+                                <li>Documentación y recursos técnicos</li>
+                                <li>Git, GitHub y control de versiones</li>
+                                <li>Comunicación en equipos de desarrollo</li>
+                                <li>Entrevistas técnicas y búsqueda de empleo</li>
+                                <li>Presentaciones técnicas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Gestión y Administración -->
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Gestión y Administración de Negocios</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Fundamentos de gestión empresarial</li>
+                                <li>Modelado de negocio para tecnología</li>
+                                <li>Finanzas para emprendedores digitales</li>
+                                <li>Aspectos legales del emprendimiento digital</li>
+                                <li>Marketing digital para productos tecnológicos</li>
+                                <li>Gestión de proyectos tecnológicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tiempos Tab -->
+            <div class="tab-content" id="tab-duration">
+                <div class="duration-container">
+                    <div class="duration-card">
+                        <div class="duration-header">
+                            <h3>Duración Individual</h3>
+                        </div>
+                        <div class="duration-content">
+                            <ul>
+                                <li><strong>Full Stack Developer:</strong> 6 meses</li>
+                                <li><strong>IA Básico:</strong> 3 meses</li>
+                                <li><strong>IA Intermedio:</strong> 4 meses</li>
+                                <li><strong>IA Avanzado:</strong> 6 meses</li>
+                                <li><strong>Inglés para Programadores:</strong> 4 meses</li>
+                                <li><strong>Gestión y Administración:</strong> 2 meses</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="duration-card">
+                        <div class="duration-header">
+                            <h3>Ciclo Integral</h3>
+                        </div>
+                        <div class="duration-content">
+                            <p>El programa completo tiene una duración de 24 meses y comprende:</p>
+                            <ul>
+                                <li>Desarrollo Full Stack</li>
+                                <li>Los tres niveles de Inteligencia Artificial</li>
+                                <li>Inglés para Programadores</li>
+                                <li>Gestión y Administración de Negocios</li>
+                            </ul>
+                            <p>Este ciclo integral prepara al estudiante para su inmediata inserción laboral o para emprender su propio negocio tecnológico.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="duration-card">
+                        <div class="duration-header">
+                            <h3>Modalidades</h3>
+                        </div>
+                        <div class="duration-content">
+                            <ul>
+                                <li><strong>Presencial:</strong> 10 horas diarias de lunes a viernes y 5 horas los sábados (50 horas semanales)</li>
+                                <li><strong>Virtual:</strong> Acceso a plataforma 24/7, con sesiones online programadas y tutorías personalizadas.</li>
+                            </ul>
+                            <p>Ambas modalidades incluyen acceso a todos los materiales, proyectos prácticos y asesorías de nuestro staff especializado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagos Diferidos Tab -->
+            <div class="tab-content" id="tab-payments">
+                <div class="payment-container">
+                    <div class="payment-intro">
+                        <h3>Modelo de Pago Diferido</h3>
+                        <p>En Proyecto Amauta, creemos que el talento no debe estar limitado por barreras económicas. Por eso, hemos implementado un sistema de pago diferido que permite a nuestros estudiantes centrarse en aprender primero y pagar después.</p>
+                    </div>
+                    
+                    <div class="payment-details">
+                        <div class="payment-card">
+                            <div class="payment-icon">
+                                <img src="https://img.icons8.com/fluency/96/000000/graduation-cap.png" alt="Estudia">
+                            </div>
+                            <h4>1. Estudia sin preocupaciones</h4>
+                            <p>Durante todo tu periodo formativo no tendrás que realizar ningún pago. Céntrate únicamente en aprender y desarrollar tus habilidades.</p>
+                        </div>
+                        
+                        <div class="payment-card">
+                            <div class="payment-icon">
+                                <img src="https://img.icons8.com/fluency/96/000000/briefcase.png" alt="Trabaja">
+                            </div>
+                            <h4>2. Consigue trabajo</h4>
+                            <p>Una vez finalizada tu formación y hayas conseguido un empleo relacionado con tus estudios, comenzará tu periodo de pagos.</p>
+                        </div>
+                        
+                        <div class="payment-card">
+                            <div class="payment-icon">
+                                <img src="https://img.icons8.com/fluency/96/000000/money.png" alt="Paga">
+                            </div>
+                            <h4>3. Paga de forma cómoda</h4>
+                            <p>Los pagos se estructuran de dos formas a elección del estudiante:</p>
+                            <ul>
+                                <li>Pagos mensuales equivalentes al 10% de tu salario durante un periodo establecido.</li>
+                                <li>Pago fijo total en cuotas mensuales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-table">
+                        <h3>Costos por programa</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Programa</th>
+                                    <th>Presencial</th>
+                                    <th>Virtual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Full Stack Developer</td>
+                                    <td>24 pagos de 10% salario o US$ 2,000</td>
+                                    <td>12 pagos de 10% salario o US$ 1,500</td>
+                                </tr>
+                                <tr>
+                                    <td>IA Básico</td>
+                                    <td>US$ 1,500</td>
+                                    <td>US$ 1,000</td>
+                                </tr>
+                                <tr>
+                                    <td>IA Intermedio</td>
+                                    <td>US$ 2,500</td>
+                                    <td>US$ 1,800</td>
+                                </tr>
+                                <tr>
+                                    <td>IA Avanzado</td>
+                                    <td>US$ 3,500</td>
+                                    <td>US$ 2,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Inglés para Programadores</td>
+                                    <td>US$ 1,000</td>
+                                    <td>US$ 500</td>
+                                </tr>
+                                <tr>
+                                    <td>Gestión y Administración</td>
+                                    <td>US$ 1,000</td>
+                                    <td>US$ 500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="payment-note">
+                            <p><strong>Nota:</strong> Los estudiantes pueden optar por becas completas o parciales según su situación económica y rendimiento académico. Contáctanos para más información.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section id="benefits" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Beneficios Diferenciales</h2>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/money.png');"></div>
+                <h3 class="benefit-title">Pago Diferido</h3>
+                <p class="benefit-description">Estudia ahora y paga cuando consigas trabajo, eliminando barreras económicas al aprendizaje.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/classroom.png');"></div>
+                <h3 class="benefit-title">Modalidad Dual</h3>
+                <p class="benefit-description">Formación presencial y virtual, adaptándose a las necesidades y posibilidades de cada estudiante.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/brain.png');"></div>
+                <h3 class="benefit-title">Apoyo Psicológico</h3>
+                <p class="benefit-description">Acompañamiento mediante coaching y asesorías psicológicas para un desarrollo integral.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/trophy.png');"></div>
+                <h3 class="benefit-title">Premio al Logro</h3>
+                <p class="benefit-description">Los mejores estudiantes podrán integrarse al equipo de COLLIK RENACE como profesionales.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/project.png');"></div>
+                <h3 class="benefit-title">Proyectos Reales</h3>
+                <p class="benefit-description">Desarrollo de soluciones para problemas reales de nuestra sociedad como parte del aprendizaje.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon" style="background-image: url('https://img.icons8.com/fluency/96/000000/sustainability.png');"></div>
+                <h3 class="benefit-title">Sostenibilidad</h3>
+                <p class="benefit-description">Proyecto diseñado para ser autosostenible y escalable a largo plazo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nuestro Impacto</h2>
+        </div>
+        
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p class="testimonial-text">El Proyecto Amauta ofrece una visión transformadora para la educación tecnológica en el Perú. Al eliminar barreras económicas y ofrecer formación especializada, puede catalizar un cambio significativo en la inclusión digital del país.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background: url('https://randomuser.me/api/portraits/men/42.jpg') center/cover no-repeat;"></div>
+                    <div>
+                        <div class="author-name">Especialista Académico</div>
+                        <div class="author-position">Universidad Nacional de Ingeniería</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">La combinación de cursos técnicos con formación en emprendimiento e idiomas crea profesionales integrales, preparados para destacar tanto en empresas establecidas como en sus propios emprendimientos tecnológicos.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar" style="background: url('https://randomuser.me/api/portraits/women/36.jpg') center/cover no-repeat;"></div>
+                    <div>
+                        <div class="author-name">Ejecutivo Tech</div>
+                        <div class="author-position">Empresa Tecnológica Internacional</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section id="apply" class="cta" style="background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 42, 58, 0.95)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; background-blend-mode: overlay;">
+    <div class="container">
+        <h2>Construye el futuro tecnológico del Perú</h2>
+        <p>Sé parte de la primera generación de estudiantes del Proyecto Amauta y adquiere habilidades de clase mundial sin preocuparte por el costo hasta que consigas empleo.</p>
+        <a href="#" class="primary-button">Postula Ahora</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Proyecto Amauta</h3>
+                <p>Formando el futuro tecnológico del Perú mediante educación accesible y de alta calidad en desarrollo web e inteligencia artificial.</p>
+                <div class="social-links">
+                    <a href="#"><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" width="24" height="24" alt="Facebook"></a>
+                    <a href="#"><img src="https://img.icons8.com/fluency/48/000000/twitter.png" width="24" height="24" alt="Twitter"></a>
+                    <a href="#"><img src="https://img.icons8.com/fluency/48/000000/linkedin.png" width="24" height="24" alt="LinkedIn"></a>
+                    <a href="#"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" width="24" height="24" alt="Instagram"></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Enlaces</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#courses">Programas</a></li>
+                    <li><a href="#more-info">Más Información</a></li>
+                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="#apply">Postulaciones</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p><strong>Dirección:</strong> Calle La Unión 485 Los Geranios – Comas</p>
+                <p><strong>Teléfono:</strong> +51 (01) 984 835 544</p>
+                <p><strong>Email:</strong> info@collikrenace.org</p>
+                <p><strong>Horario:</strong> Lunes a Viernes 8:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 Proyecto Amauta - Hub Tecnológico Perú 2030. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    // Menú responsive
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+
+    menuToggle.addEventListener('click', function() {
+        navList.classList.toggle('show');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navList.classList.remove('show');
+        });
+    });
+    // JavaScript para funcionalidad de tabs
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tabs functionality
+        const tabLinks = document.querySelectorAll('.tabs-nav li');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabLinks.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(item => item.classList.remove('active'));
+                
+                // Add active class to current tab
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Accordion functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', function() {
+                // Toggle current item
+                item.classList.toggle('active');
+                
+                // Close other items
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
